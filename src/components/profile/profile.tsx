@@ -36,6 +36,6 @@ export const Profile: FC<IProfile> = (props): ReactElement => {
   );
 };
 
-// Profile.propTypes = {
-//   name: PropTypes.string,
-// };
+Profile.propTypes = {
+  name: PropTypes.string,
+};
