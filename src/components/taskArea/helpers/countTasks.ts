@@ -1,7 +1,4 @@
-import {
-  ITaskCounter,
-  TaskCounterStatusType,
-} from '../../taskCounter/interfaces/ITaskCounter';
+import { TaskCounterStatusType } from '../../taskCounter/interfaces/ITaskCounter';
 import { ITaskApi } from '../interfaces/ITaskApi';
 
 export const countTasks = (

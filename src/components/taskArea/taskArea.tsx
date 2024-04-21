@@ -16,13 +16,13 @@ export const TaskArea: FC = (): ReactElement => {
 
   const { error, isLoading, data, refetch } = useQuery('tasks', async () => {
     return await sendApiRequest<ITaskApi[]>(
-      'https://todo-api-cfxw.onrender.com/tasks',
+      process.env.REACT_APP_API_ENDPOINT ?? '',
       'GET',
     );
   });
 
   const updateTaskMutation = useMutation((data: IUpdateTask) =>
-    sendApiRequest('https://todo-api-cfxw.onrender.com/tasks', 'PUT', data),
+    sendApiRequest(process.env.REACT_APP_API_ENDPOINT ?? '', 'PUT', data),
   );
 
   useEffect(() => {
