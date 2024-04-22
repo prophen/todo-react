@@ -4,7 +4,12 @@ import { ITextField } from './interfaces/ITextField';
 import PropTypes from 'prop-types';
 
 export const TaskDescriptionField: FC<ITextField> = (props): ReactElement => {
-  const { onChange = (e) => console.log(e), disabled = false } = props;
+  const textInput = React.useRef<HTMLTextAreaElement>(null);
+  const {
+    onChange = (e) => console.log(e),
+    disabled = false,
+    inputRef = textInput,
+  } = props;
 
   return (
     <TextField
@@ -19,6 +24,7 @@ export const TaskDescriptionField: FC<ITextField> = (props): ReactElement => {
       fullWidth
       onChange={onChange}
       disabled={disabled}
+      inputRef={inputRef}
     />
   );
 };

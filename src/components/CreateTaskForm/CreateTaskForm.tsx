@@ -34,6 +34,9 @@ export const CreateTaskForm: FC = (): ReactElement => {
   const [priority, setPriority] = useState<string>(Priority.normal);
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
+  const titleRef = React.useRef<HTMLInputElement>(null);
+  const descriptionRef = React.useRef<HTMLTextAreaElement>(null);
+
   // declare component context
   const tasksUpdatedContext = useContext(TaskStatusChangedContext);
 
@@ -54,6 +57,21 @@ export const CreateTaskForm: FC = (): ReactElement => {
       priority,
     };
     createTaskMutation.mutate(task);
+
+    const inputElement = titleRef.current;
+    if (inputElement) {
+      inputElement.value = '';
+    }
+    setTitle('');
+
+    const descriptionElement = descriptionRef.current;
+    if (descriptionElement) {
+      descriptionElement.value = '';
+    }
+    setDescription('');
+    setDate(new Date());
+    setStatus(Status.todo);
+    setPriority(Priority.normal);
   };
 
   // Manage side effects inside the application
@@ -94,10 +112,12 @@ export const CreateTaskForm: FC = (): ReactElement => {
         <TaskTitleField
           onChange={(e) => setTitle(e.target.value)}
           disabled={createTaskMutation.isLoading}
+          inputRef={titleRef}
         />
         <TaskDescriptionField
           onChange={(e) => setDescription(e.target.value)}
           disabled={createTaskMutation.isLoading}
+          inputRef={descriptionRef}
         />
         <TaskDateField
           value={date}

@@ -5,4 +5,5 @@ export interface ITextField extends IDisabled {
   onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
+  inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 }
