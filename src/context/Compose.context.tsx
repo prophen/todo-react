@@ -9,6 +9,7 @@ export default function ComposeContext(props: IComposeContext) {
 
   return (
     <>
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {components.reduceRight((acc, Comp: any) => {
         return <Comp>{acc}</Comp>;
       }, children)}
