@@ -42,7 +42,7 @@ export const CreateTaskForm: FC = (): ReactElement => {
 
   // Create task mutation
   const createTaskMutation = useMutation((data: ICreateTask) =>
-    sendApiRequest(process.env.REACT_APP_API_ENDPOINT ?? '', 'POST', data),
+    sendApiRequest(process.env.API_ENDPOINT ?? '', 'POST', data),
   );
 
   const createTaskHandler = () => {
