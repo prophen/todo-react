@@ -16,13 +16,13 @@ export const TaskArea: FC = (): ReactElement => {
 
   const { error, isLoading, data, refetch } = useQuery('tasks', async () => {
     return await sendApiRequest<ITaskApi[]>(
-      process.env.API_ENDPOINT ?? '',
+      process.env.REACT_APP_API_ENDPOINT ?? '',
       'GET',
     );
   });
 
   const updateTaskMutation = useMutation((data: IUpdateTask) =>
-    sendApiRequest(process.env.API_ENDPOINT ?? '', 'PUT', data),
+    sendApiRequest(process.env.REACT_APP_API_ENDPOINT ?? '', 'PUT', data),
   );
 
   useEffect(() => {
